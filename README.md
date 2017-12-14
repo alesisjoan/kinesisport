@@ -1,0 +1,1 @@
+# kinesio_odoo
