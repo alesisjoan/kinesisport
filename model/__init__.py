@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import afiliacion
-import consulta
-import estudio
-import partner
-import actividad
-import plan
+from . import afiliacion
+from . import consulta
+from . import estudio
+from . import partner
+from . import actividad
+from . import plan

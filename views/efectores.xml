@@ -5,7 +5,7 @@
             <field name="name">kinesisport.efectores.list</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree default-order="write_date desc">
+                <tree default_order="write_date desc">
                     <field name="name"/>
                 </tree>
             </field>
@@ -24,19 +24,9 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window.view" id="act_open_efectores_view_form">
-            <field name="act_window_id" ref="efectores_list_action"/>
-            <field name="sequence" eval="20"/>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="efectores_view_form"/>
-        </record>
 
-        <record model="ir.actions.act_window.view" id="act_open_efectores_view_tree">
-            <field name="act_window_id" ref="efectores_list_action"/>
-            <field name="sequence" eval="10"/>
-            <field name="view_mode">tree</field>
-            <field name="view_id" ref="efectores_view_list"/>
-        </record>
+
+
 
 
         <record id="efectores_list_action" model="ir.actions.act_window">
@@ -49,6 +39,20 @@
             <field name="context">{'default_medico':1}</field>
 
 
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_efectores_view_form">
+            <field name="act_window_id" ref="efectores_list_action"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="efectores_view_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_efectores_view_tree">
+            <field name="act_window_id" ref="efectores_list_action"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="efectores_view_list"/>
         </record>
 
     </data>

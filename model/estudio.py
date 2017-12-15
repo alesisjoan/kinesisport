@@ -32,6 +32,7 @@ class Estudio(models.Model):
 
     tipo_estudio_id = fields.Many2one('kinesisport.tipo_estudio', required=True)
     adjunto_ids = fields.One2many('kinesisport.adjunto', 'estudio_id')
+    attachments = fields.One2many('ir.attachment', 'estudio_id', string="Adjuntos")
 
 
 

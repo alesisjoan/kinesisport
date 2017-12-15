@@ -4,6 +4,12 @@ from openerp import fields, models, api
 from openerp.exceptions import Warning, ValidationError
 
 
+class Archivo(models.Model):
+    _inherit = 'ir.attachment'
+    consulta_id = fields.Many2one('kinesisport.consulta', default=lambda self: self._context.get('consulta_id'))
+    estudio_id = fields.Many2one('kinesisport.estudio', default=lambda self: self._context.get('estudio_id'))
+
+
 class Consulta(models.Model):
 
     _name = 'kinesisport.consulta'
@@ -18,5 +24,6 @@ class Consulta(models.Model):
     plan_id = fields.Many2one('kinesisport.plan', string="Plan", related='afiliacion_id.plan_id')
 
     adjunto_ids = fields.One2many('kinesisport.adjunto', 'consulta_id')
+    attachments = fields.One2many('ir.attachment', 'consulta_id', string="Adjuntos")
 
 
