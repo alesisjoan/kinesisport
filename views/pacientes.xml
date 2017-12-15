@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="paciente_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.paciente.list</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="name"/>
+                    <field name="documento"/>
+                    <field name="apto"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="paciente_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.paciente.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="documento"/>
+                        <field name="fecha_nacimiento"/>
+                        <field name="edad"/>
+                        <field name="paciente" invisible="1" context="{'default_paciente': True}"/>
+                        <field name="id" invisible="1"/>
+
+                        <field name="apto"/>
+                        <field name="actividades_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="evolucion_ids" colspan="4" context="{'paciente_id': id}">
+                                <tree string="Evolociones" editable="bottom">
+                                    <field name="fecha"/>
+                                    <field name="apto"/>
+                                </tree>
+                            </field>
+                    </group>
+                    <notebook>
+                        <page string="Afiliaciones">
+                            <field name="afiliacion_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
+                                <tree string="Afiliaciones" editable="bottom">
+                                    <field name="institucion_id"/>
+                                    <field name="plan_id"/>
+                                    <field name="name"/>
+                                </tree>
+                                <form string="Afiliaciones" version="8.0">
+                                    <group col="4" colspan="4">
+                                        <field name="paciente_id"/>
+                                        <field name="name"/>
+
+                                        <field name="institucion_id"/>
+                                        <field name="plan_id"/>
+                                        <field name="regimen"/>
+                                        <group col="2" colspan="4">
+                                            <field name="observaciones"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Estudios">
+                            <field name="estudios_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
+                                <tree string="Estudios">
+                                    <field name="fecha"/>
+                                    <field name="solicitante_id"/>
+                                    <field name="efector_id"/>
+                                    <field name="informe"/>
+                                </tree>
+                                <form string="Estudios" version="8.0">
+                                    <notebook>
+                                        <page string="Principal">
+                                            <group col="4" colspan="4">
+                                                <field name="paciente_id"/>
+                                                <field name="tipo_estudio_id"/>
+                                                <field name="efector_id"/>
+                                                <field name="solicitante_id"/>
+                                                <field name="fecha"/>
+                                                <field name="informe"/>
+                                            </group>
+                                            <group>
+                                                <field name="adjunto_ids" colspan="4" nolabel="1">
+                                                    <tree string="Adjuntos">
+                                                        <field name="file" filename="filename"/>
+                                                        <field name="filename" invisible="1"/>
+                                                        <field name="descripcion"/>
+                                                    </tree>
+                                                    <form string="Adjunto" version="8.0">
+                                                        <sheet>
+                                                            <group col="4" colspan="4">
+                                                                <field name="file" filename="filename"/>
+                                                                <group col="2" colspan="4">
+                                                                    <field name="filename" invisible="1"/>
+                                                                    <field name="descripcion"/>
+                                                                </group>
+                                                            </group>
+                                                        </sheet>
+                                                    </form>
+                                                </field>
+                                            </group>
+                                        </page>
+                                        <page string="Adjuntos">
+                                            <field name="adjunto_ids" colspan="4" nolabel="1">
+                                                <tree string="Adjuntos">
+                                                    <field name="file" filename="filename"/>
+                                                    <field name="filename" invisible="1"/>
+                                                    <field name="descripcion"/>
+                                                </tree>
+                                                <form string="Adjunto" version="8.0">
+                                                    <sheet>
+                                                        <group col="4" colspan="4">
+                                                            <field name="file" filename="filename"/>
+                                                            <group col="2" colspan="4">
+                                                                <field name="filename" invisible="1"/>
+                                                                <field name="descripcion"/>
+                                                            </group>
+                                                        </group>
+                                                    </sheet>
+                                                </form>
+                                            </field>
+                                        </page>
+                                    </notebook>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Consultas">
+                            <field name="consultas_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
+                                <tree string="Consultas">
+                                    <field name="fecha"/>
+                                    <field name="solicitante_id"/>
+                                    <field name="efector_id"/>
+                                    <field name="informe"/>
+                                </tree>
+                                <form string="Consultas" version="8.0">
+                                    <notebook>
+                                        <page string="Principal">
+                                            <group col="4" colspan="4">
+                                                <field name="paciente_id"/>
+                                                <field name="efector_id"/>
+                                                <field name="solicitante_id"/>
+                                                <field name="fecha"/>
+                                                <field name="informe"/>
+                                            </group>
+                                            <group>
+                                                <field name="afiliacion_id"
+                                                       domain="[('paciente_id', '=', paciente_id)]"/>
+                                            </group>
+                                        </page>
+                                        <page string="Adjuntos">
+                                            <field name="adjunto_ids" colspan="4" nolabel="1">
+                                                <tree string="Adjuntos">
+                                                    <field name="file" filename="filename"/>
+                                                    <field name="filename" invisible="1"/>
+                                                    <field name="descripcion"/>
+                                                </tree>
+                                                <form string="Adjunto" version="8.0">
+                                                    <sheet>
+                                                        <group col="4" colspan="4">
+                                                            <field name="file" filename="filename"/>
+                                                            <group col="2" colspan="4">
+                                                                <field name="filename" invisible="1"/>
+                                                                <field name="descripcion"/>
+                                                            </group>
+                                                        </group>
+                                                    </sheet>
+                                                </form>
+                                            </field>
+                                        </page>
+                                    </notebook>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_pacientes_view_form">
+            <field name="act_window_id" ref="pacientes_list_action"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="paciente_view_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_pacientes_view_tree">
+            <field name="act_window_id" ref="pacientes_list_action"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="paciente_view_list"/>
+        </record>
+
+
+        <record id="pacientes_list_action" model="ir.actions.act_window">
+            <field name="name">Pacientes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="domain">[('paciente','=',True)]</field>
+            <field name="context">{'default_paciente':1}</field>
+
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_principal_kinesisport" sequence="1" name="Kinesisport"/>
+
+        <menuitem id="menu_pacientes" name="Pacientes"
+                  parent="menu_principal_kinesisport" sequence="10"/>
+
+        <!-- action="sistemas_list_action" sequence="10"-->
+
+        <menuitem id="menu_paciente" name="Pacientes"
+                  parent="menu_pacientes" sequence="10" action="pacientes_list_action"/>
+
+<!--        <menuitem id="menu_estudio" name="Estudios"
+                  parent="menu_pacientes" sequence="20" action="estudios_list_action"/>
+
+        <menuitem id="menu_consulta" name="Consultas"
+                  parent="menu_pacientes" sequence="30" action="consultas_list_action"/>-->
+
+
+        <menuitem id="menu_configuracion" name="Configuracion" sequence="30" parent="menu_principal_kinesisport"/>
+
+                <menuitem id="menu_efectores" name="Efectores"
+                  parent="menu_configuracion" sequence="10" action="efectores_list_action"/>
+
+                <menuitem id="menu_instituciones" name="Instituciones"
+                  parent="menu_configuracion" sequence="20" action="instituciones_list_action"/>
+
+                <menuitem id="menu_planes" name="Planes"
+                  parent="menu_configuracion" sequence="30" action="planes_list_action"/>
+
+                <menuitem id="menu_tipos_estudio" name="Tipos de Estudio"
+                  parent="menu_configuracion" sequence="40" action="tipo_estudios_list_action"/>
+
+    </data>
+</openerp>

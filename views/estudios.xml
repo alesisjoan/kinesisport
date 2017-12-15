@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="kinesisport_estudio_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.estudio.list</field>
+            <field name="model">kinesisport.estudio</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="paciente_id"/>
+                    <field name="solicitante_id"/>
+                    <field name="efector_id"/>
+                    <field name="fecha"/>
+                    <field name="tipo_estudio_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="kinesisport_estudio_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.estudio.form</field>
+            <field name="model">kinesisport.estudio</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="paciente_id"/>
+                        <field name="tipo_estudio_id"/>
+                        <field name="efector_id"/>
+                        <field name="solicitante_id"/>
+                        <field name="fecha"/>
+                        <field name="informe"/>
+                        <field name="adjunto_ids" colspan="4">
+                            <tree string="Adjuntos" editable="bottom">
+                                <field name="file"/>
+                                <field name="descripcion"/>
+                            </tree>
+                            <form string="Adjunto" version="8.0">
+                                <sheet>
+                                    <group col="4" colspan="4">
+                                        <field name="file"/>
+                                        <group col="2" colspan="4">
+                                            <field name="descripcion"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="estudios_list_action" model="ir.actions.act_window">
+            <field name="name">Estudios</field>
+            <field name="res_model">kinesisport.estudio</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+
+    </data>
+</openerp>

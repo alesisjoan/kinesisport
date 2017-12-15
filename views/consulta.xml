@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="kinesisport_consulta_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.consulta.list</field>
+            <field name="model">kinesisport.consulta</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="paciente_id"/>
+                    <field name="solicitante_id"/>
+                    <field name="fecha"/>
+                    <field name="efector_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="kinesisport_consulta_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.consulta.form</field>
+            <field name="model">kinesisport.consulta</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="paciente_id"/>
+                        <field name="solicitante_id"/>
+                        <field name="fecha"/>
+                        <field name="efector_id"/>
+                        <field name="informe"/>
+                        <notebook>
+                            <page string="Adjuntos">
+                                <field name="adjunto_ids" colspan="4" nolabel="1">
+                                    <tree string="Adjuntos">
+                                         <field name="file"/>
+                                         <field name="descripcion"/>
+                                    </tree>
+                                    <form string="Adjunto" version="8.0">
+                                        <sheet>
+                                            <group col="4" colspan="4">
+                                                <field name="file"/>
+                                                <group col="2" colspan="4">
+                                                    <field name="descripcion"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="consultas_list_action" model="ir.actions.act_window">
+            <field name="name">Consultas</field>
+            <field name="res_model">kinesisport.consulta</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+
+    </data>
+</openerp>

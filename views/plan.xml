@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="kinesisport_plan_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.plan.list</field>
+            <field name="model">kinesisport.plan</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="institucion_id"/>
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="kinesisport_plan_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.plan.form</field>
+            <field name="model">kinesisport.plan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="institucion_id"/>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="observaciones"/>
+                        <field name="estado"/>
+                        <field name="afiliacion_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="planes_list_action" model="ir.actions.act_window">
+            <field name="name">Planes de Salud</field>
+            <field name="res_model">kinesisport.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+    </data>
+</openerp>

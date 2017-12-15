@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="kinesisport_tipo_estudio_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.tipo_estudio.list</field>
+            <field name="model">kinesisport.tipo_estudio</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="name"/>
+                    <field name="codigo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="kinesisport_tipo_estudio_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.tipo_estudio.form</field>
+            <field name="model">kinesisport.tipo_estudio</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="codigo"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tipo_estudios_list_action" model="ir.actions.act_window">
+            <field name="name">Tipos de Estudio</field>
+            <field name="res_model">kinesisport.tipo_estudio</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+    </data>
+</openerp>
