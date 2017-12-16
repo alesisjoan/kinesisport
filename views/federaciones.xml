@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="federacion_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.federacion.list</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="federacion_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.federacion.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="is_institution" invisible="1"/>
+                        <field name="is_federation" invisible="1"/>
+                        <field name="club_ids" widget="many2many_tags" options="{'no_quick_create' : True, 'no_create' : True, 'no_create_edit' : True, 'no_open' : True}"
+                        />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+       
+
+
+        <record id="federaciones_list_action" model="ir.actions.act_window">
+            <field name="name">federaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="domain">[('is_institution', '=', 1), ('is_federation', '=', 1)]</field>
+            <field name="context">{'default_is_institution':1, 'default_is_federation':1}</field>
+
+        </record>
+
+ <record model="ir.actions.act_window.view" id="act_open_federaciones_view_form">
+            <field name="act_window_id" ref="federaciones_list_action"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="federacion_view_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_federaciones_view_tree">
+            <field name="act_window_id" ref="federaciones_list_action"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="federacion_view_list"/>
+        </record>
+
+    </data>
+</openerp>

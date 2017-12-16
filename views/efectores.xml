@@ -5,8 +5,9 @@
             <field name="name">kinesisport.efectores.list</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree default_order="write_date desc">
+                <tree default-order="write_date desc">
                     <field name="name"/>
+                    <field name="matricula_provincial"/>
                 </tree>
             </field>
         </record>
@@ -18,15 +19,13 @@
                 <form>
                     <group>
                         <field name="name"/>
-                        <field name="medico" invisible="1"  context="{'default_medico': True}"/>
+                        <field name="medico" invisible="1" context="{'default_medico': True}"/>
+                        <field name="matricula_provincial"/>
+                        <field name="sexo"/>
                     </group>
                 </form>
             </field>
         </record>
-
-
-
-
 
 
         <record id="efectores_list_action" model="ir.actions.act_window">

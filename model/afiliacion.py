@@ -10,7 +10,7 @@ class Afiliacion(models.Model):
     name = fields.Char(string="Numero afiliado", required=True)
     #fecha_asociacion = fields.Date(string="Fecha asociacion", default=fields.Date.today())
     #fecha_fin_asociacion = fields.Date(string="Fecha vencimiento", required=True)
-    plan_id = fields.Many2one('kinesisport.plan', required=True)
+    plan_id = fields.Many2one('kinesisport.plan', required=True, string="Plan")
     paciente_id = fields.Many2one(
         'res.partner',
         default=lambda self: self._context.get('paciente_id'),  domain=[('paciente', '=', 1)],required=True, string="Paciente")
@@ -20,8 +20,6 @@ class Afiliacion(models.Model):
     institucion_id = fields.Many2one('res.partner', related='plan_id.institucion_id')
     observaciones = fields.Text()
     fecha = fields.Datetime(default=fields.Datetime.now)
-
-    # verificar quizás si es del hospital español que se indique fecha de asociación
 
     @api.multi
     def name_get(self):

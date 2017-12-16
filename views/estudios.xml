@@ -11,6 +11,7 @@
                     <field name="efector_id"/>
                     <field name="fecha"/>
                     <field name="tipo_estudio_id"/>
+                    <field name="retirado"/>
                 </tree>
             </field>
         </record>
@@ -27,6 +28,7 @@
                         <field name="solicitante_id"/>
                         <field name="fecha"/>
                         <field name="informe"/>
+                        <field name="retirado"/>
                         <field name="adjunto_ids" colspan="4">
                             <tree string="Adjuntos" editable="bottom">
                                 <field name="file"/>
