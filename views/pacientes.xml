@@ -50,14 +50,15 @@
                         <field name="edad"/>
                         <field name="paciente" invisible="1" context="{'default_paciente': True}"/>
                         <field name="id" invisible="1"/>
-                        <field name="realiza_actividades_club_ids" context="{'paciente_id': id}" widget="many2many_tags"/>
-<!--                            <tree editable="bottom">
-                                <field name="paciente_id" invisible="1"/>
-                                <field name="name" invisible="1"/>
-                                <field name="actividad_id"/>
-                                <field name="institucion_id"/>
-                            </tree>
-                        </field>-->
+                        <field name="realiza_actividades_club_ids" context="{'paciente_id': id}"
+                               widget="many2many_tags"/>
+                        <!--                            <tree editable="bottom">
+                                                        <field name="paciente_id" invisible="1"/>
+                                                        <field name="name" invisible="1"/>
+                                                        <field name="actividad_id"/>
+                                                        <field name="institucion_id"/>
+                                                    </tree>
+                                                </field>-->
                         <!--<field name="juega_en_ids"/>-->
                         <!--<field name="realiza_actividades_ids"/>-->
                         <field name="apto"/>
@@ -66,7 +67,7 @@
                     <group>
                         <field name="evolucion_ids" colspan="4" context="{'paciente_id': id}"
                                attrs="{'readonly': True}">
-                            <tree string="Evolociones">
+                            <tree string="Evolociones" colors="#ff0000:apto=='no_apto';#2a9c2a:apto=='apto'">
                                 <field name="fecha"/>
                                 <field name="apto"/>
                             </tree>
@@ -97,11 +98,12 @@
                         </page>
                         <page string="Estudios">
                             <field name="estudios_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
-                                <tree string="Estudios">
+                                <tree string="Estudios" editable="bottom"
+                                      colors="#ff0000:retirado==False;#2a9c2a:retirado==True">
                                     <field name="fecha"/>
+                                    <field name="tipo_estudio_id"/>
                                     <field name="solicitante_id"/>
                                     <field name="efector_id"/>
-                                    <field name="informe"/>
                                     <field name="retirado"/>
                                     <field name="apto"/>
                                 </tree>
@@ -116,6 +118,7 @@
                                                 <field name="fecha"/>
                                                 <field name="informe"/>
                                                 <field name="apto"/>
+                                                <field name="retirado"/>
                                             </group>
                                         </page>
 
@@ -128,9 +131,9 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Revisacions">
+                        <page string="Revisaciones">
                             <field name="revisacions_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
-                                <tree string="revisacions">
+                                <tree string="Revisaciones">
                                     <field name="fecha"/>
                                     <field name="solicitante_id"/>
                                     <field name="efector_id"/>

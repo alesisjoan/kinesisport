@@ -18,7 +18,7 @@ class Estudio(models.Model):
     _name = 'kinesisport.estudio'
     _inherit = 'kinesisport.revisacion'
 
-    tipo_estudio_id = fields.Many2one('kinesisport.tipo_estudio', required=True)
+    tipo_estudio_id = fields.Many2one('kinesisport.tipo_estudio', string="Tipo de Estudio", required=True)
 
     retirado = fields.Boolean(default=False)
     attachments = fields.One2many('ir.attachment', 'estudio_id', string="Adjuntos")
