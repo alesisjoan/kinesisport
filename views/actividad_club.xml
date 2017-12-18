@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="kinesisport_actividad_club_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.actividad.club.list</field>
+            <field name="model">kinesisport.actividad.club</field>
+            <field name="arch" type="xml">
+                <tree default-order="write_date desc">
+                    <field name="name"/>
+                    <field name="institucion_id" />
+                    <field name="actividad_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="kinesisport_actividad_club_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.actividad.club.form</field>
+            <field name="model">kinesisport.actividad.club</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="institucion_id" options="{'no_quick_create' : True, 'no_create' : True, 'no_create_edit' : True, 'no_open' : True}"/>
+                        <field name="actividad_id" options="{'no_quick_create' : True, 'no_create' : True, 'no_create_edit' : True, 'no_open' : True}"/>
+                        <field name="name" readonly="1"/>
+                        <field name="paciente_ids" readonly="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="actividades_club_list_action" model="ir.actions.act_window">
+            <field name="name">Actividades por Club</field>
+            <field name="res_model">kinesisport.actividad.club</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+
+    </data>
+</openerp>

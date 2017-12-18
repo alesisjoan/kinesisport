@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree default-order="write_date desc">
                     <field name="name"/>
-                    <field name="institucion_ids" />
+                    <!--<field name="institucion_ids" />-->
                 </tree>
             </field>
         </record>
@@ -19,7 +19,7 @@
                 <form>
                     <group>
                         <field name="name"/>
-                        <field name="institucion_ids" widget="many2many_tags" options="{'no_quick_create' : True, 'no_create' : True, 'no_create_edit' : True, 'no_open' : True}"/>
+                        <!--<field name="institucion_ids" widget="many2many_tags" options="{'no_quick_create' : True, 'no_create' : True, 'no_create_edit' : True, 'no_open' : True}"/>-->
                     </group>
                 </form>
             </field>

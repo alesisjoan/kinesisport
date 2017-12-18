@@ -29,6 +29,9 @@
         <menuitem id="menu_actividades" name="Actividades"
                   parent="menu_configuracion" sequence="3" action="actividades_list_action"/>
 
+        <menuitem id="menu_actividades_club" name="Actividades por Club"
+                  parent="menu_configuracion" sequence="4" action="actividades_club_list_action"/>
+
         <menuitem id="menu_efectores" name="Efectores"
                   parent="menu_configuracion" sequence="10" action="efectores_list_action"/>
 

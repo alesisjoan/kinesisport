@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <record id="kinesisport_consulta_view_list" model="ir.ui.view">
-            <field name="name">kinesisport.consulta.list</field>
-            <field name="model">kinesisport.consulta</field>
+        <record id="kinesisport_revisacion_view_list" model="ir.ui.view">
+            <field name="name">kinesisport.revisacion.list</field>
+            <field name="model">kinesisport.revisacion</field>
             <field name="arch" type="xml">
                 <tree default-order="write_date desc">
                     <field name="paciente_id"/>
@@ -14,9 +14,9 @@
             </field>
         </record>
 
-        <record id="kinesisport_consulta_view_form" model="ir.ui.view">
-            <field name="name">kinesisport.consulta.form</field>
-            <field name="model">kinesisport.consulta</field>
+        <record id="kinesisport_revisacion_view_form" model="ir.ui.view">
+            <field name="name">kinesisport.revisacion.form</field>
+            <field name="model">kinesisport.revisacion</field>
             <field name="arch" type="xml">
                 <form>
                     <group>
@@ -51,9 +51,9 @@
         </record>
 
 
-        <record id="consultas_list_action" model="ir.actions.act_window">
-            <field name="name">Consultas</field>
-            <field name="res_model">kinesisport.consulta</field>
+        <record id="revisacions_list_action" model="ir.actions.act_window">
+            <field name="name">revisacions</field>
+            <field name="res_model">kinesisport.revisacion</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>

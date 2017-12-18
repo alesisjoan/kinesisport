@@ -8,14 +8,14 @@ class Archivo(models.Model):
     _inherit = 'ir.attachment'
     _name = 'ir.attachment'
 
-    # consulta_id = fields.Many2one('kinesisport.consulta', default=lambda self: self._context.get('consulta_id'))
-    consulta_id = fields.Many2one('kinesisport.consulta', )
+    # revisacion_id = fields.Many2one('kinesisport.revisacion', default=lambda self: self._context.get('revisacion_id'))
+    revisacion_id = fields.Many2one('kinesisport.revisacion', )
     # estudio_id = fields.Many2one('kinesisport.estudio', default=lambda self: self._context.get('estudio_id'))
     estudio_id = fields.Many2one('kinesisport.estudio', )
 
 
-class Consulta(models.Model):
-    _name = 'kinesisport.consulta'
+class Revisacion(models.Model):
+    _name = 'kinesisport.revisacion'
 
     fecha = fields.Date(default=fields.Date.today)
     paciente_id = fields.Many2one('res.partner', domain=[('paciente', '=', True)],
@@ -30,7 +30,7 @@ class Consulta(models.Model):
     afiliacion_id = fields.Many2one('kinesisport.afiliacion', string="Afiliacion", )
     plan_id = fields.Many2one('kinesisport.plan', string="Plan", related='afiliacion_id.plan_id')
 
-    attachments = fields.One2many('ir.attachment', 'consulta_id', string="Adjuntos")
+    attachments = fields.One2many('ir.attachment', 'revisacion_id', string="Adjuntos")
     apto = fields.Selection([('no_apto', 'No apto'), ('apto', 'Apto')])
 
     @api.model

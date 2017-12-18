@@ -8,7 +8,7 @@
                 <tree default-order="write_date desc">
                     <field name="name"/>
                     <field name="federacion_ids"/>
-                    <field name="ofrece_actividades_ids"/>
+                    <!--<field name="ofrece_actividades_ids"/>-->
                 </tree>
             </field>
         </record>
@@ -23,7 +23,7 @@
                         <field name="is_institution" invisible="1"/>
                         <field name="is_club" invisible="1"/>
                         <field name="federacion_ids" widget="many2many_tags"/>
-                        <field name="ofrece_actividades_ids" widget="many2many_tags"/>
+                        <!--<field name="ofrece_actividades_ids" widget="many2many_tags"/>-->
                     </group>
                 </form>
             </field>

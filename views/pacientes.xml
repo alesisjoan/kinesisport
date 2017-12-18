@@ -9,8 +9,9 @@
                     <field name="name"/>
                     <field name="documento"/>
                     <field name="apto"/>
-                    <field name="realiza_actividades_ids"/>
-                    <field name="juega_en_ids"/>
+                    <field name="realiza_actividades_club_ids"/>
+                    <!--<field name="realiza_actividades_ids"/>-->
+                    <!--<field name="juega_en_ids"/>-->
                 </tree>
             </field>
         </record>
@@ -23,13 +24,13 @@
                 <search string="Paciente">
                     <field name="documento"/>
                     <field name="name"/>
-                    <field name="realiza_actividades_ids"/>
+                    <field name="realiza_actividades_club_ids"/>
                     <newline/>
                     <group expand="0" string="Agrupar...">
                         <filter string="Sexo" domain="[('paciente','=',True)]" context="{'group_by':'sexo'}"/>
                         <filter string="Apto" domain="[('paciente','=',True)]" context="{'group_by':'apto'}"/>
                         <filter string="Actividades y Clubes" domain="[('paciente','=',True)]"
-                                context="{'group_by':'realiza_actividades_ids'}"/>
+                                context="{'group_by':'realiza_actividades_club_ids'}"/>
                     </group>
                 </search>
             </field>
@@ -57,8 +58,8 @@
                                 <field name="institucion_id"/>
                             </tree>
                         </field>-->
-                        <field name="juega_en_ids"/>
-                        <field name="realiza_actividades_ids"/>
+                        <!--<field name="juega_en_ids"/>-->
+                        <!--<field name="realiza_actividades_ids"/>-->
                         <field name="apto"/>
 
                     </group>
@@ -127,16 +128,16 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Consultas">
-                            <field name="consultas_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
-                                <tree string="Consultas">
+                        <page string="Revisacions">
+                            <field name="revisacions_ids" colspan="4" nolabel="1" context="{'paciente_id': id}">
+                                <tree string="revisacions">
                                     <field name="fecha"/>
                                     <field name="solicitante_id"/>
                                     <field name="efector_id"/>
                                     <field name="informe"/>
                                     <field name="apto"/>
                                 </tree>
-                                <form string="Consultas" version="8.0">
+                                <form string="revisacions" version="8.0">
                                     <notebook>
                                         <page string="Principal">
                                             <group col="4" colspan="4">
@@ -157,7 +158,7 @@
                                         <page string="Adjuntos">
                                             <group>
                                                 <field name="attachments" nolabel="1" widget="one2many_binary"
-                                                       context="{'consulta_id': id}"/>
+                                                       context="{'revisacion_id': id}"/>
                                             </group>
                                         </page>
                                     </notebook>

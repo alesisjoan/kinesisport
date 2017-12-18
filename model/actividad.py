@@ -12,16 +12,20 @@ class Actividad(models.Model):
     # institucion_ids = fields.One2many('res.partner', 'ofrece_actividades_ids', string="Instituciones que la ofrecen")
     # paciente_ids = fields.One2many('res.partner', 'realiza_actividades_ids', string="Pacientes que la realizan")
 
-    participante_ids = fields.Many2many('res.partner', 'paciente_actividad', 'actividad_id', 'paciente_id',
-                                        domain=[('paciente', '=', True)], string="Participan")
-
-    institucion_ids = fields.Many2many('res.partner', 'institucion_actividad', 'actividad_id', 'institucion_id',
-                                       domain=[('&'), ('is_institution', '=', True), ('is_club', '=', True)],
-                                       string="Se realiza en", required=True)
+    # participante_ids = fields.Many2many('res.partner', 'paciente_actividad', 'actividad_id', 'paciente_id',
+    #                                     domain=[('paciente', '=', True)], string="Participan")
+    #
+    # institucion_ids = fields.Many2many('res.partner', 'institucion_actividad', 'actividad_id', 'institucion_id',
+    #                                    domain=[('&'), ('is_institution', '=', True), ('is_club', '=', True)],
+    #                                    string="Se realiza en", required=True)
 
 
 class ActividadClub(models.Model):
     _name = 'kinesisport.actividad.club'
+
+    _sql_constraints = [('institucion_actividad_unique','UNIQUE(institucion_id, actividad_id)',
+                         'Ya existe la actividad con esa institucion.')]
+
 
     @api.onchange('actividad_id')
     def onchange_actividad(self):
@@ -41,7 +45,10 @@ class ActividadClub(models.Model):
     paciente_ids = fields.Many2many('res.partner', 'paciente_actividad_club', 'actividad_club_id', 'paciente_id',
                                     domain=[('paciente', '=', True)], string="Jugador")
 
-    name = fields.Char(compute='onchange_actividad', readonly=True, store=True)
+    name = fields.Char(compute='onchange_actividad', string="Nombre", readonly=True, store=True)
+
+    @api.one
+    @api.depends
 
     @api.one
     @api.depends('actividad_id', 'institucion_id')

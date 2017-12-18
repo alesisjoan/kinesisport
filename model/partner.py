@@ -74,30 +74,30 @@ class res_partner(models.Model):
         'kinesisport.estudio',
         'paciente_id', string="Estudios realizados")
 
-    consultas_ids = fields.One2many(
-        'kinesisport.consulta',
-        'paciente_id', string="Consultas realizadas")
+    revisacions_ids = fields.One2many(
+        'kinesisport.revisacion',
+        'paciente_id', string="Revisaciones realizadas")
 
     apto = fields.Selection([('no_apto', 'No apto'), ('apto', 'Apto')], readonly=True)
 
-    realiza_actividades_ids = fields.Many2many('kinesisport.actividad', 'paciente_actividad', 'paciente_id',
-                                               'actividad_id',
-                                               string="Realiza Actividades")
+    # realiza_actividades_ids = fields.Many2many('kinesisport.actividad', 'paciente_actividad', 'paciente_id',
+    #                                            'actividad_id',
+    #                                            string="Realiza Actividades")
 
     realiza_actividades_club_ids = fields.Many2many('kinesisport.actividad.club', 'paciente_actividad_club', 'paciente_id',
                                                'actividad_club_id',
                                                string="Realiza Actividades")
 
-    ofrece_actividades_ids = fields.Many2many('kinesisport.actividad', 'institucion_actividad', 'institucion_id',
-                                              'actividad_id',
-                                              string="Ofrece Actividades")
+    # ofrece_actividades_ids = fields.Many2many('kinesisport.actividad', 'institucion_actividad', 'institucion_id',
+    #                                           'actividad_id',
+    #                                           string="Ofrece Actividades")
 
-    juega_en_ids = fields.Many2many('res.partner', 'jugadores', 'jugador_id', 'club_id',
-                                       string="Juega en clubes")
-
-    jugadores_ids = fields.Many2many('res.partner', 'jugadores', 'club_id',
-                                       'jugador_id',
-                                       string="Tiene jugadores")
+    # juega_en_ids = fields.Many2many('res.partner', 'jugadores', 'jugador_id', 'club_id',
+    #                                    string="Juega en clubes")
+    #
+    # jugadores_ids = fields.Many2many('res.partner', 'jugadores', 'club_id',
+    #                                    'jugador_id',
+    #                                    string="Tiene jugadores")
 
     is_institution = fields.Boolean("Es Institucion", default=False)
 
@@ -114,38 +114,3 @@ class res_partner(models.Model):
     evolucion_ids = fields.One2many(
         'kinesisport.evolucion',
         'paciente_id', string="Evoluciones")
-
-    @api.model
-    @api.returns('self', lambda value: value.id)
-    def create(self, vals):
-        # if vals.get('paciente_id', 0):
-        #     self.env['kinesisport.evolucion'].create({
-        #         'apto': vals['apto'],
-        #         'paciente_id': vals['paciente_id'],
-        #         'fecha': vals['fecha'],
-        #     })
-        #     self.env['res.partner'].search([('id', '=', vals['paciente_id'])])[0].apto = vals['apto']
-        return models.Model.create(self, vals)
-
-    @api.multi
-    def write(self, vals):
-        if self.paciente and vals.get('realiza_actividades_club_ids', 0):
-            # si borra una actividad y solo registra uno, tengo que sacarla
-            # si borra un club y solo registra uno, tengo que sacarlo
-            # si agrega una actividad y no habia antes, tengo que agregarla
-            # si agrega un club y no habia antes, tengo que agregarlo
-        # if self.paciente_id and vals.get('apto', 0):
-        #     self.env['kinesisport.evolucion'].create({
-        #         'apto': vals['apto'],
-        #         'paciente_id': self.paciente_id.id,
-        #         'fecha': self.fecha or False,
-        #     })
-        #     self.paciente_id.apto = vals['apto']
-        return models.Model.write(self, vals)
-        # pacientes = []
-        # for paciente in self.paciente_ids:
-        #     paciente.juega_en_ids = [(4, self.institucion_id.id)]
-        #     paciente.realiza_actividades_ids = [(4, self.actividad.id)]
-        #     pacientes.append((4, paciente.id))
-        # self.actividad_id.participante_ids = pacientes
-        # self.institucion_id.jugadores_ids = pacientes

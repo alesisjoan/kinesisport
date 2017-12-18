@@ -16,7 +16,7 @@ class TipoEstudio(models.Model):
 class Estudio(models.Model):
 
     _name = 'kinesisport.estudio'
-    _inherit = 'kinesisport.consulta'
+    _inherit = 'kinesisport.revisacion'
 
     tipo_estudio_id = fields.Many2one('kinesisport.tipo_estudio', required=True)
 

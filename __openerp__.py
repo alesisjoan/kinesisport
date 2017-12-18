@@ -29,6 +29,7 @@ EN DESARROLLO
         # 'views/estudios.xml',
         'views/instituciones.xml',
         'views/actividad.xml',
+        'views/actividad_club.xml',
         'views/clubes.xml',
         'views/federaciones.xml',
         'views/pacientes.xml',
