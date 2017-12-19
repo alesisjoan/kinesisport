@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class Plan(models.Model):
@@ -20,3 +20,8 @@ class Plan(models.Model):
         ('1', 'Habilitado'), ], default='1', string='Estado')
 
     observaciones = fields.Text(help='Condiciones especiales, observaciones, notas, etc.')
+
+    @api.multi
+    def name_get(self):
+        return [(plan.id, (plan.institucion_id.name + ' - ' + plan.name)) for plan in self]
+

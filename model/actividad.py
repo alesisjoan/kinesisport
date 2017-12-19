@@ -45,18 +45,15 @@ class ActividadClub(models.Model):
     paciente_ids = fields.Many2many('res.partner', 'paciente_actividad_club', 'actividad_club_id', 'paciente_id',
                                     domain=[('paciente', '=', True)], string="Jugador")
 
-    name = fields.Char(compute='onchange_actividad', string="Nombre", readonly=True, store=True)
-
-    @api.one
-    @api.depends
+    name = fields.Char(compute='onchange_actividad', string="Nombre", store=True)
 
     @api.one
     @api.depends('actividad_id', 'institucion_id')
     def onchange_actividad(self):
         if self.actividad_id and self.institucion_id:
             # TODO buscar si las actividades son compatibles
-            if self.actividad_id.id not in self.institucion_id.ofrece_actividades_ids.ids:
-                raise Warning("La actividad no se encuentra registrada en la institucion")
+            #if self.actividad_id.id not in self.institucion_id.ofrece_actividades_ids.ids:
+            #raise Warning("La actividad no se encuentra registrada en la institucion")
             self.name = self.actividad_id.name + ' @ ' + self.institucion_id.name
 
 

@@ -5,7 +5,7 @@
             <field name="name">kinesisport.efectores.list</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree default-order="write_date desc">
+                <tree default_order="write_date desc">
                     <field name="name"/>
                     <field name="matricula_provincial"/>
                 </tree>

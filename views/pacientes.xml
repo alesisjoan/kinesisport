@@ -5,7 +5,7 @@
             <field name="name">kinesisport.paciente.list</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree default-order="name desc">
+                <tree default_order="name desc">
                     <field name="name"/>
                     <field name="documento"/>
                     <field name="apto"/>
@@ -87,7 +87,7 @@
                                         <field name="name"/>
 
                                         <field name="institucion_id"/>
-                                        <field name="plan_id"/>
+                                        <field name="plan_id" />
                                         <field name="regimen"/>
                                         <group col="2" colspan="4">
                                             <field name="observaciones"/>

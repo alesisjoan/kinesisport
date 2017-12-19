@@ -5,7 +5,7 @@
             <field name="name">kinesisport.revisacion.list</field>
             <field name="model">kinesisport.revisacion</field>
             <field name="arch" type="xml">
-                <tree default-order="write_date desc">
+                <tree default_order="write_date desc">
                     <field name="paciente_id"/>
                     <field name="solicitante_id"/>
                     <field name="fecha"/>

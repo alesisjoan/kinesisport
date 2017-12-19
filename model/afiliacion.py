@@ -13,7 +13,7 @@ class Afiliacion(models.Model):
     plan_id = fields.Many2one('kinesisport.plan', required=True, string="Plan")
     paciente_id = fields.Many2one(
         'res.partner',
-        default=lambda self: self._context.get('paciente_id'),  domain=[('paciente', '=', 1)],required=True, string="Paciente")
+        default=lambda self: self._context.get('paciente_id'),  domain=[('paciente', '=', 1)],required=True, string="Paciente", ondelete='cascade')
     regimen = fields.Selection(
         [('obligatorio', 'Obligatorio'), ('voluntario', 'Voluntario')], 'Régimen')
     active = fields.Boolean(default=True)

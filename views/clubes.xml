@@ -5,7 +5,7 @@
             <field name="name">kinesisport.club.list</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree default-order="write_date desc">
+                <tree default_order="write_date desc">
                     <field name="name"/>
                     <field name="federacion_ids"/>
                     <!--<field name="ofrece_actividades_ids"/>-->
