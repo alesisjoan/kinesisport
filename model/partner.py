@@ -20,6 +20,9 @@ class res_partner(models.Model):
     _inherit = 'res.partner'
     _description = 'Partner'
 
+    _sql_constraints = [('documento_unique', 'UNIQUE(documento)', 'El documento no debe repetirse con el de otra persona.')]
+
+
     @api.one
     def get_edad(self):
         if self.fecha_nacimiento:

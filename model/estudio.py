@@ -21,6 +21,7 @@ class Estudio(models.Model):
     tipo_estudio_id = fields.Many2one('kinesisport.tipo_estudio', string="Tipo de Estudio", required=True)
 
     retirado = fields.Boolean(default=False)
+    copia = fields.Boolean(default=False)
     attachments = fields.One2many('ir.attachment', 'estudio_id', string="Adjuntos")
 
 

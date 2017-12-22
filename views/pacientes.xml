@@ -10,8 +10,6 @@
                     <field name="documento"/>
                     <field name="apto"/>
                     <field name="realiza_actividades_club_ids"/>
-                    <!--<field name="realiza_actividades_ids"/>-->
-                    <!--<field name="juega_en_ids"/>-->
                 </tree>
             </field>
         </record>
@@ -52,26 +50,7 @@
                         <field name="id" invisible="1"/>
                         <field name="realiza_actividades_club_ids" context="{'paciente_id': id}"
                                widget="many2many_tags"/>
-                        <!--                            <tree editable="bottom">
-                                                        <field name="paciente_id" invisible="1"/>
-                                                        <field name="name" invisible="1"/>
-                                                        <field name="actividad_id"/>
-                                                        <field name="institucion_id"/>
-                                                    </tree>
-                                                </field>-->
-                        <!--<field name="juega_en_ids"/>-->
-                        <!--<field name="realiza_actividades_ids"/>-->
                         <field name="apto"/>
-
-                    </group>
-                    <group>
-                        <field name="evolucion_ids" colspan="4" context="{'paciente_id': id}"
-                               attrs="{'readonly': True}">
-                            <tree string="Evolociones" colors="#ff0000:apto=='no_apto';#2a9c2a:apto=='apto'">
-                                <field name="fecha"/>
-                                <field name="apto"/>
-                            </tree>
-                        </field>
                     </group>
                     <notebook>
                         <page string="Afiliaciones">
@@ -87,7 +66,7 @@
                                         <field name="name"/>
 
                                         <field name="institucion_id"/>
-                                        <field name="plan_id" />
+                                        <field name="plan_id"/>
                                         <field name="regimen"/>
                                         <group col="2" colspan="4">
                                             <field name="observaciones"/>
@@ -105,6 +84,7 @@
                                     <field name="solicitante_id"/>
                                     <field name="efector_id"/>
                                     <field name="retirado"/>
+                                    <field name="copia"/>
                                     <field name="apto"/>
                                 </tree>
                                 <form string="Estudios" version="8.0">
@@ -119,6 +99,7 @@
                                                 <field name="informe"/>
                                                 <field name="apto"/>
                                                 <field name="retirado"/>
+                                                <field name="copia"/>
                                             </group>
                                         </page>
 
@@ -169,6 +150,15 @@
                             </field>
                         </page>
                     </notebook>
+                    <group>
+                        <field name="evolucion_ids" colspan="4" context="{'paciente_id': id}"
+                               attrs="{'readonly': True}">
+                            <tree string="Evolociones" colors="#ff0000:apto=='no_apto';#2a9c2a:apto=='apto'">
+                                <field name="fecha"/>
+                                <field name="apto"/>
+                            </tree>
+                        </field>
+                    </group>
                 </form>
             </field>
         </record>
